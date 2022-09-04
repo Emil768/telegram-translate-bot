@@ -34,7 +34,7 @@ const res = [];
 add.addEventListener("click", () => {
   list.insertAdjacentHTML("afterbegin", create(inputValue.value));
   res.push(inputValue.value);
-  console.log(res);
+  console.log(JSON.stringify(res));
   inputValue.value = "";
   updateAndDelete(list.querySelectorAll(".list__item"));
 });
@@ -52,11 +52,15 @@ const create = (value) => {
   return li;
 };
 
-// console.log(
-//   "арба арбуз аргамак Аргентина аргумент аргументировать арена аренда арендатор арест арестованный арестовать арестовывать ариец арийский аристократ аристократия арифметика арифметический арка армейский Армения армия армянин Армянск армянский ароматный арсенал артель артерия артиллерист артиллерия артист археолог археология архив архивный архитектор архитектура архитектурный арык аскет Астана астра астролог астрология астроном астрономический астрономия асфальт атака атаковать атеист ателье атлантический атлас атлет атмосфера атмосферный атом атомный аттестат Атырау ау аул Афганистан Афины афиша афоризм Африка африканский аффикс ах ахать ахнуть ашуг Ашхабад аэродром аэропорт аят".split(
-//     " "
-//   )
-// );
+document.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    list.insertAdjacentHTML("afterbegin", create(inputValue.value));
+    res.push(inputValue.value);
+    console.log(res);
+    inputValue.value = "";
+    updateAndDelete(list.querySelectorAll(".list__item"));
+  }
+});
 
 // fetch("http://localhost:3333/upload", {
 //   method: "GET",
