@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import getTranslate from "./utils/getTranslate.js";
+import { RuLang } from "./locales/index.js";
+import getAllTranslate from "./utils/getAllTranslate.js";
 
 const app = express();
 
@@ -37,6 +39,14 @@ bot.on("sticker", (ctx) =>
 bot.command("time", (ctx) =>
   ctx.reply(String(new Date().toLocaleDateString("ru-RU", options)))
 );
+
+bot.command("search", async (ctx) => {
+  try {
+    ctx.reply("Выберите букву (A-Я)");
+  } catch (e) {
+    console.error(e);
+  }
+});
 
 bot.command("help", async (ctx) => {
   try {

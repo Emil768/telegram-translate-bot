@@ -30,12 +30,15 @@ const updateAndDelete = (listItems) => {
 updateAndDelete(listItem);
 
 const res = [];
+let count = 0;
 
 add.addEventListener("click", () => {
   list.insertAdjacentHTML("afterbegin", create(inputValue.value));
   res.push(inputValue.value);
   console.log(JSON.stringify(res));
   inputValue.value = "";
+  count++;
+  document.getElementById("title").textContent = count;
   updateAndDelete(list.querySelectorAll(".list__item"));
 });
 
@@ -70,3 +73,11 @@ document.addEventListener("keypress", function (e) {
 // }).then((response) => {
 //   console.log(response);
 // });
+
+console.log(
+  JSON.stringify(
+    "щавель щадить щебет щебетание щебетать Щебетовка щегол щеголять щедрость щедрый щека щекотать щелкать щель щенок щепотка щербина щетина щи щиколотка щипать щипнуть щипцы щит щука щур щурить щуриться Щёлкино щёлочь щётка".split(
+      " "
+    )
+  )
+);
