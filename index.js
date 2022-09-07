@@ -6,8 +6,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import getTranslate from "./utils/getTranslate.js";
-import { RuLang } from "./locales/index.js";
-import getAllTranslate from "./utils/getAllTranslate.js";
 
 const app = express();
 
