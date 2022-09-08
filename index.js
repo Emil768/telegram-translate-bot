@@ -6,21 +6,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import getTranslate from "./utils/getTranslate.js";
+import { options } from "./utils/options.js";
 
 const app = express();
 
 app.use(cors());
 app.use(json());
-
-const options = {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-  hour: "2-digit",
-  minute: "2-digit",
-  hour24: true,
-  day: "numeric",
-};
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.start(async (ctx) => {
@@ -35,7 +26,9 @@ bot.on("sticker", (ctx) =>
 );
 
 bot.command("time", (ctx) =>
-  ctx.reply(String(new Date().toLocaleDateString("ru-RU", options)))
+  ctx.replyWithHTML(
+    `<b>${String(new Date().toLocaleDateString("ru-RU", options))}</b>`
+  )
 );
 
 bot.command("help", async (ctx) => {
@@ -65,9 +58,9 @@ bot.command("links", async (ctx) => {
   }
 });
 
-bot.on("message", (ctx) => {
+bot.on("message", async (ctx) => {
   try {
-    const res = getTranslate(ctx.message.text);
+    const res = await getTranslate(ctx.message.text);
     ctx.reply(res);
   } catch (err) {
     console.log(err);
@@ -78,7 +71,3 @@ bot.launch();
 
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
-
-app.listen(3333, () => {
-  console.log("server is starting PORT 3333!");
-});
