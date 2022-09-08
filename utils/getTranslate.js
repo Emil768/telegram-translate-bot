@@ -1,15 +1,13 @@
-import { RuLang, CrhLang } from "../locales/index.js";
+import db from "../db.json" assert { type: "json" };
 
 export default function getTranslate(search) {
+  console.log(search);
+  console.log(typeof db);
   const letter = search[0].toUpperCase();
-  const getLetter = RuLang.letterAll[letter];
+  const getLetter = JSON.parse(db);
+
   if (getLetter) {
-    const getIndex = getLetter.indexOf(search.toLowerCase());
-    if (getIndex !== -1) {
-      return CrhLang.letterAll[letter][getIndex];
-    } else {
-      return "В словаре нету такого слова 🙃";
-    }
+    return true;
   } else {
     return "В словаре нету такого слова 🙃";
   }

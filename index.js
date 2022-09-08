@@ -78,3 +78,7 @@ bot.launch();
 
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
+
+app.listen(3333, () => {
+  console.log("server is starting PORT 3333!");
+});
