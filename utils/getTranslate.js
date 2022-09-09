@@ -4,7 +4,7 @@ export default function getTranslate(search) {
   const letter = search[0].toUpperCase();
   if (db[letter]) {
     const check = db[letter].find(
-      (item) => item.title === search.toLowerCase()
+      (item) => item.title.toLowerCase() === search.toLowerCase()
     );
     if (check) return check.titleCRH;
   }

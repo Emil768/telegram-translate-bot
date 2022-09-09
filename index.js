@@ -15,7 +15,7 @@ app.use(json());
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.start(async (ctx) => {
-  await ctx.reply(`Selyam aleykum ${ctx.message.from.username} !`);
+  await ctx.reply(`Selyam aleykum ${ctx.message.from.first_name} !`);
   await ctx.reply("Жду слово которое нужно перевести 😄");
 });
 
