@@ -1,6 +1,6 @@
-import db from "../db.json" assert { type: "json" };
+const db = require("../db.json");
 
-export default function getTranslate(search) {
+function getTranslate(search) {
   const letter = search[0].toUpperCase();
   if (db[letter]) {
     const check = db[letter].find(
@@ -10,3 +10,5 @@ export default function getTranslate(search) {
   }
   return "В словаре нету такого слова 🙃";
 }
+
+module.exports = getTranslate;

@@ -1,19 +1,20 @@
-import express, { json } from "express";
-import cors from "cors";
-import { Telegraf, Markup } from "telegraf";
-import dotenv from "dotenv";
+const express = require("express");
+const { json } = require("express");
+const { Telegraf, Markup } = require("telegraf");
+const dotenv = require("dotenv");
+const cors = require("cors");
 
 dotenv.config();
 
-import getTranslate from "./utils/getTranslate.js";
-import { options } from "./utils/options.js";
+const options = require("./utils/options.js");
+const getTranslate = require("./utils/getTranslate.js");
 
 const app = express();
 
 app.use(cors());
 app.use(json());
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf("5684418514:AAHZye8bFxtHlqQkSLiiatnMxAB-VNIE6q0");
 bot.start(async (ctx) => {
   await ctx.reply(`Selyam aleykum ${ctx.message.from.first_name} !`);
   await ctx.reply("Жду слово которое нужно перевести 😄");

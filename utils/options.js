@@ -1,4 +1,4 @@
-export const options = {
+const options = {
   year: "numeric",
   month: "long",
   day: "numeric",
@@ -7,3 +7,5 @@ export const options = {
   hour24: true,
   day: "numeric",
 };
+
+module.exports = options;
