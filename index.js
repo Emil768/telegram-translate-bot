@@ -14,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(json());
 
-const bot = new Telegraf("5684418514:AAHZye8bFxtHlqQkSLiiatnMxAB-VNIE6q0");
+const bot = new Telegraf("5684418514:AAGvoYN8E30BMElStVf-AgJtppsucuZCrzY");
 bot.start(async (ctx) => {
   await ctx.reply(`Selyam aleykum ${ctx.message.from.first_name} !`);
   await ctx.reply("Жду слово которое нужно перевести 😄");
@@ -37,7 +37,7 @@ bot.command("help", async (ctx) => {
     await ctx.replyWithHTML(
       "<b>Если возникли вопросы,предложения 👇</b> ",
       Markup.inlineKeyboard([
-        Markup.button.url("Написать", "https://t.me/Emilka22878"),
+        Markup.button.url("Написать", "https://t.me/Emilka768"),
       ])
     );
   } catch (e) {
